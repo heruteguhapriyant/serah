@@ -39,6 +39,11 @@
       <a href="<?= APP_URL ?>/" target="_blank">
         <span class="nav-icon">↗</span> Lihat Website
       </a>
+      <div class="sidebar-nav-label" style="margin-top:0.8rem">Profile</div>
+      <a href="<?= APP_URL ?>/admin/profile" 
+        class="<?= $activeMenu === 'profile' ? 'active' : '' ?>">
+        <span class="nav-icon">◎</span> Profil
+      </a>
     </nav>
 
     <div class="sidebar-footer">

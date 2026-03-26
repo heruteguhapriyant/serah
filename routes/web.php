@@ -29,3 +29,7 @@ $router->post('/admin/rekap/store',      'AdminRekapController@store');
 $router->get('/admin/rekap/edit/{id}',   'AdminRekapController@edit');
 $router->post('/admin/rekap/update/{id}','AdminRekapController@update');
 $router->post('/admin/rekap/delete/{id}','AdminRekapController@delete');
+
+/** ADMIN - PROFILE **/
+$router->get('/admin/profile',         'AdminProfileController@index');
+$router->post('/admin/profile/update', 'AdminProfileController@update');

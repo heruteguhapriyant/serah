@@ -29,6 +29,9 @@ require APP_ROOT . '/app/views/layouts/admin_layout.php';
       <a href="<?= APP_URL ?>/admin/rekap/create" class="btn btn-dark">
         + Tambah Rekap Kegiatan
       </a>
+      <a href="<?= APP_URL ?>/admin/profile" class="btn btn-outline">
+        ⚙ Pengaturan Profil
+      </a>
       <a href="<?= APP_URL ?>/" target="_blank" class="btn btn-outline">
         ↗ Lihat Website Publik
       </a>

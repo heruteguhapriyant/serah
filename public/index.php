@@ -12,6 +12,8 @@ require_once dirname(__DIR__) . '/core/Router.php';
 // Models (autoload here for simplicity)
 require_once dirname(__DIR__) . '/app/models/ProgramModel.php';
 require_once dirname(__DIR__) . '/app/models/RekapModel.php';
+require_once dirname(__DIR__) . '/app/models/AdminModel.php'; 
+
 
 // Session
 session_name(SESSION_NAME);

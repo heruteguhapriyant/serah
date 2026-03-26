@@ -14,9 +14,13 @@ class AuthController extends Controller {
         $username = trim($_POST['username'] ?? '');
         $password = trim($_POST['password'] ?? '');
 
-        if ($username === ADMIN_USERNAME && $password === ADMIN_PASSWORD) {
-            $_SESSION['admin']    = true;
-            $_SESSION['username'] = $username;
+        $adminModel = new AdminModel();
+        $admin      = $adminModel->findByUsername($username);
+
+        if ($admin && password_verify($password, $admin['password'])) {
+            $_SESSION['admin']          = true;
+            $_SESSION['admin_id']       = $admin['id'];
+            $_SESSION['username']       = $admin['username'];
             $this->redirect('/admin');
         }
 

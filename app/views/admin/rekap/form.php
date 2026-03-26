@@ -68,13 +68,35 @@ require APP_ROOT . '/app/views/layouts/admin_layout.php';
         <?php endif; ?>
       </div>
 
-      <div class="form-group">
-        <label for="foto_url">URL Foto Thumbnail <span style="color:var(--warm-gray);font-weight:300">(opsional)</span></label>
-        <input type="url" id="foto_url" name="foto_url"
-               value="<?= htmlspecialchars($rekap['foto_url'] ?? '') ?>"
-               placeholder="https://drive.google.com/..." />
-        <div class="form-hint">URL gambar untuk tampilan kartu (Google Drive, Imgur, dsb.)</div>
+    <div class="form-group">
+      <label for="foto_file">
+        Foto
+        <span style="color:var(--warm-gray);font-weight:300">(opsional)</span>
+      </label>
+
+      <?php if (!empty($rekap['foto_file'])): ?>
+        <div class="foto-preview" id="current-preview">
+          <img src="/uploads/rekap/<?= htmlspecialchars($rekap['foto_file']) ?>"
+              alt="Foto saat ini"
+              style="max-width:200px;max-height:150px;border-radius:6px;object-fit:cover;margin-bottom:8px;display:block;" />
+          <small style="color:var(--warm-gray)">Foto saat ini. Upload baru untuk mengganti.</small>
+        </div>
+      <?php endif; ?>
+
+      <input type="file"
+            id="foto_file"
+            name="foto_file"
+            accept="image/jpeg,image/png,image/webp,image/gif"
+            onchange="previewFoto(this)" />
+
+      <div id="foto-new-preview" style="margin-top:8px;display:none;">
+        <img id="foto-preview-img"
+            src=""
+            alt="Preview"
+            style="max-width:200px;max-height:150px;border-radius:6px;object-fit:cover;" />
       </div>
+
+      <div class="form-hint">Format: JPG, PNG, WebP, GIF. Maks. 2MB.</div>
     </div>
 
     <!-- PDF URL Preview -->
@@ -100,5 +122,22 @@ require APP_ROOT . '/app/views/layouts/admin_layout.php';
 
   </form>
 </div>
+
+<script>
+function previewFoto(input) {
+  const preview = document.getElementById('foto-new-preview');
+  const img     = document.getElementById('foto-preview-img');
+  if (input.files && input.files[0]) {
+    const reader = new FileReader();
+    reader.onload = e => {
+      img.src = e.target.result;
+      preview.style.display = 'block';
+    };
+    reader.readAsDataURL(input.files[0]);
+  } else {
+    preview.style.display = 'none';
+  }
+}
+</script>
 
 <?php require APP_ROOT . '/app/views/layouts/admin_footer.php'; ?>

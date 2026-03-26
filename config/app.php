@@ -6,10 +6,6 @@ define('APP_TAGLINE', 'Forum Literasi Seni & Pertunjukan');
 define('APP_URL', 'http://localhost/serah/public');
 define('APP_ROOT', dirname(__DIR__));
 
-// Admin credentials (hardcoded, change before production)
-define('ADMIN_USERNAME', 'admin');
-define('ADMIN_PASSWORD', 'serah2024'); // plain text, hashed at login check
-
 // Session
 define('SESSION_NAME', 'serah_session');
 
