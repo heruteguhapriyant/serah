@@ -28,35 +28,130 @@ Project ini juga merupakan colab dari Remaja, pelajar, mahasiswa, komunitas seni
 
 ---
 
-## 📂 Struktur Project
+# SERAH — Forum Literasi Seni & Pertunjukan
+## Panduan Setup & Instalasi
 
-```id="c7mx8x"
+---
+
+## Struktur Folder
+
+```
 serah/
 ├── app/
-├── core/
+│   ├── controllers/        ← Logic tiap halaman
+│   ├── models/             ← Akses database
+│   └── views/
+│       ├── public/         ← Tampilan untuk publik
+│       ├── admin/          ← Tampilan panel admin
+│       └── layouts/        ← Header/footer bersama
+├── core/                   ← Database, Router, Controller, Model base
 ├── config/
-├── public/
-├── routes/
-├── storage/
+│   ├── app.php             ← Konfigurasi utama & kredensial admin
+│   └── database.php        ← Konfigurasi MySQL
+├── public/                 ← Folder yang diakses browser (document root)
+│   ├── index.php           ← Front controller (entry point)
+│   ├── .htaccess           ← URL rewriting
+│   ├── css/
+│   │   ├── style.css       ← CSS publik
+│   │   └── admin.css       ← CSS admin
+│   └── js/
+├── routes/web.php          ← Definisi semua route
+├── storage/                ← File storage (opsional)
+└── database.sql            ← Schema & sample data MySQL
 ```
 
 ---
 
-## ⚙️ Cara Menjalankan
+## Langkah Instalasi
 
-```bash id="9u6r2v"
-git clone https://github.com/USERNAME/serah.git
-cd serah
-php -S localhost:8000 -t public
+### 1. Konfigurasi Database
+Buka file `config/database.php` dan sesuaikan:
+```php
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'serah_db');
+define('DB_USER', 'root');
+define('DB_PASS', '');
 ```
 
-Buka di browser:
+### 2. Buat Database
+Import file `database.sql` ke MySQL/MariaDB:
+```bash
+mysql -u root -p < database.sql
+```
+Atau buka di phpMyAdmin → Import → pilih `database.sql`.
 
-```id="4c8v5f"
-http://localhost:8000
+### 3. Konfigurasi APP_URL
+Buka `config/app.php`, sesuaikan `APP_URL` dengan URL lokal Anda:
+```php
+// Jika folder project ada di htdocs/serah:
+define('APP_URL', 'http://localhost/serah/public');
+
+// Jika di root server:
+define('APP_URL', 'http://localhost');
+```
+
+### 4. Aktifkan mod_rewrite (Apache)
+Pastikan `mod_rewrite` aktif di Apache. Di XAMPP:
+- Buka `httpd.conf`
+- Pastikan `LoadModule rewrite_module` tidak dikomentari
+- Pastikan `AllowOverride All` aktif untuk folder project
+
+### 5. Ubah Kredensial Admin (Penting!)
+Buka `config/app.php` dan ganti:
+```php
+define('ADMIN_USERNAME', 'admin');
+define('ADMIN_PASSWORD', 'serah2024'); // ← ganti ini!
 ```
 
 ---
+
+## Akses Website
+
+| URL | Keterangan |
+|-----|-----------|
+| `http://localhost/serah/public/` | Halaman publik (Beranda) |
+| `http://localhost/serah/public/program` | Halaman Program |
+| `http://localhost/serah/public/rekap` | Halaman Rekap Kegiatan |
+| `http://localhost/serah/public/admin/login` | Login Admin |
+| `http://localhost/serah/public/admin` | Dashboard Admin |
+| `http://localhost/serah/public/admin/program` | Kelola Program |
+| `http://localhost/serah/public/admin/rekap` | Kelola Rekap |
+
+---
+
+## Cara Kerja Rekap Kegiatan
+
+1. **Admin** login → buka menu *Rekap Kegiatan* → klik *Tambah Rekap*
+2. Isi form: Judul, Deskripsi, Tanggal, URL PDF (dari Google Drive), URL Foto (opsional)
+3. Pastikan file PDF di Google Drive sudah di-set **"Anyone with the link can view"**
+4. **User publik** membuka halaman `/rekap` → melihat daftar kartu rekap
+5. Klik kartu → muncul **popup konfirmasi** → klik *Ya, Buka PDF* → PDF terbuka di tab baru
+
+---
+
+## Fitur
+
+### Publik
+- Beranda dengan hero, daftar program, dan rekap terbaru
+- Halaman Program lengkap (semua program)
+- Halaman Rekap Kegiatan (semua rekap dengan popup konfirmasi PDF)
+
+### Admin
+- Login/logout dengan session
+- Dashboard dengan statistik dan aksi cepat
+- CRUD Program (Tambah, Edit, Hapus)
+- CRUD Rekap Kegiatan (Tambah, Edit, Hapus) dengan input URL PDF Google Drive
+- Validasi form server-side
+
+---
+
+## Catatan Teknis
+- **PHP**: 8.0+
+- **Database**: MySQL 5.7+ / MariaDB 10.3+
+- **Server**: Apache dengan mod_rewrite
+- Tidak memerlukan Composer atau framework apapun
+- Password admin disimpan sebagai plain text di config — untuk produksi, disarankan menggunakan `password_hash()` dan `password_verify()`
+
 
 ## 🎯 Tujuan Project
 
