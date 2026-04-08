@@ -51,6 +51,65 @@
       </address>
     </div>
   </div>
+
+  <div style="
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 2rem 0 2.5rem;
+    margin-bottom: 0;
+    position: relative; z-index: 1;
+  ">
+    <p style="
+      font-size: 0.62rem; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+      margin-bottom: 1.2rem;
+    ">Didukung oleh</p>
+
+    <div style="display:flex; align-items:center; gap:2.5rem; flex-wrap:wrap;">
+
+      <!-- Sponsor 1 -->
+      <a href="https://URL-SPONSOR-1.com" target="_blank" rel="noopener">
+        <img src="<?= APP_URL ?>/img/logo-sponsor-1.png"
+            alt="Nama Sponsor 1"
+            style="height:28px; width:auto; opacity:0.45; filter:brightness(0) invert(1);
+                    transition:opacity 0.2s;"
+            onmouseover="this.style.opacity='0.8'"
+            onmouseout="this.style.opacity='0.45'" />
+      </a>
+
+      <!-- Sponsor 2 -->
+      <a href="https://URL-SPONSOR-2.com" target="_blank" rel="noopener">
+        <img src="<?= APP_URL ?>/img/logo-sponsor-2.png"
+            alt="Nama Sponsor 2"
+            style="height:28px; width:auto; opacity:0.45; filter:brightness(0) invert(1);
+                    transition:opacity 0.2s;"
+            onmouseover="this.style.opacity='0.8'"
+            onmouseout="this.style.opacity='0.45'" />
+      </a>
+
+      <!-- Sponsor 3 -->
+      <a href="https://URL-SPONSOR-3.com" target="_blank" rel="noopener">
+        <img src="<?= APP_URL ?>/img/logo-sponsor-3.png"
+            alt="Nama Sponsor 3"
+            style="height:28px; width:auto; opacity:0.45; filter:brightness(0) invert(1);
+                    transition:opacity 0.2s;"
+            onmouseover="this.style.opacity='0.8'"
+            onmouseout="this.style.opacity='0.45'" />
+      </a>
+
+      <!-- Sponsor 4 -->
+      <a href="https://URL-SPONSOR-4.com" target="_blank" rel="noopener">
+        <img src="<?= APP_URL ?>/img/logo-sponsor-4.png"
+            alt="Nama Sponsor 4"
+            style="height:28px; width:auto; opacity:0.45; filter:brightness(0) invert(1);
+                    transition:opacity 0.2s;"
+            onmouseover="this.style.opacity='0.8'"
+            onmouseout="this.style.opacity='0.45'" />
+      </a>
+
+    </div>
+  </div>
+
   <div class="footer-bottom">
     <p>© <?= date('Y') ?> SERAH. Forum Literasi Seni &amp; Pertunjukan.</p>
     <div class="footer-bottom-links">
