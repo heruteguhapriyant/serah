@@ -24,7 +24,8 @@ require APP_ROOT . '/app/views/layouts/public_header.php';
   <?php else: ?>
     <div class="cards-grid">
       <?php foreach ($programs as $p): ?>
-        <div class="program-card fade-up">
+        <div class="program-card fade-up" style="cursor:pointer"
+             onclick="window.location='<?= APP_URL ?>/program/<?= $p['id'] ?>'">
           <div class="program-card-img">
             <?php if (!empty($p['foto_url'])): ?>
               <img src="<?= htmlspecialchars($p['foto_url']) ?>" alt="<?= htmlspecialchars($p['judul']) ?>" loading="lazy" />
@@ -36,6 +37,12 @@ require APP_ROOT . '/app/views/layouts/public_header.php';
             <div class="program-card-date"><?= date('d M Y', strtotime($p['tanggal'])) ?></div>
             <h3 class="program-card-title"><?= htmlspecialchars($p['judul']) ?></h3>
             <p class="program-card-desc"><?= htmlspecialchars($p['deskripsi']) ?></p>
+          </div>
+          <div style="padding:0.9rem 1.6rem; border-top:1px solid rgba(28,31,33,0.06);
+                      background:var(--base-light); display:flex; justify-content:flex-end;">
+            <span class="btn btn-ghost btn-sm" style="color:var(--terracotta)">
+              Baca Selengkapnya →
+            </span>
           </div>
         </div>
       <?php endforeach; ?>

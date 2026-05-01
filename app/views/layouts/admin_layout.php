@@ -34,6 +34,12 @@
       <a href="<?= APP_URL ?>/admin/rekap" class="<?= ($activeMenu ?? '') === 'rekap' ? 'active' : '' ?>">
         <span class="nav-icon">📄</span> Rekap Kegiatan
       </a>
+      <a href="<?= APP_URL ?>/admin/mediapartner" class="<?= ($activeMenu ?? '') === 'mediapartner' ? 'active' : '' ?>">
+        <span class="nav-icon">🤝</span> Media Partner
+      </a>
+      <a href="<?= APP_URL ?>/admin/heroslider" class="<?= ($activeMenu ?? '') === 'heroslider' ? 'active' : '' ?>">
+        <span class="nav-icon">🖼️</span> Hero Slider
+      </a>
 
       <div class="sidebar-nav-label" style="margin-top:0.8rem">Publik</div>
       <a href="<?= APP_URL ?>/" target="_blank">

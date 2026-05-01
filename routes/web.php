@@ -4,6 +4,7 @@
 /** PUBLIC ROUTES **/
 $router->get('/',              'HomeController@index');
 $router->get('/program',       'ProgramController@index');
+$router->get('/program/{id}',          'ProgramController@detail');
 $router->get('/rekap',         'RekapController@index');
 
 /** ADMIN AUTH **/
@@ -33,3 +34,19 @@ $router->post('/admin/rekap/delete/{id}','AdminRekapController@delete');
 /** ADMIN - PROFILE **/
 $router->get('/admin/profile',         'AdminProfileController@index');
 $router->post('/admin/profile/update', 'AdminProfileController@update');
+
+// ADMIN MEDIA PARTNER
+$router->get('/admin/mediapartner',              'AdminMediaPartnerController@index');
+$router->get('/admin/mediapartner/create',       'AdminMediaPartnerController@create');
+$router->post('/admin/mediapartner/store',       'AdminMediaPartnerController@store');
+$router->get('/admin/mediapartner/edit/{id}',    'AdminMediaPartnerController@edit');
+$router->post('/admin/mediapartner/update/{id}', 'AdminMediaPartnerController@update');
+$router->post('/admin/mediapartner/delete/{id}', 'AdminMediaPartnerController@delete');
+
+// ADMIN HERO SLIDER
+$router->get('/admin/heroslider',              'AdminHeroSliderController@index');
+$router->get('/admin/heroslider/create',       'AdminHeroSliderController@create');
+$router->post('/admin/heroslider/store',       'AdminHeroSliderController@store');
+$router->get('/admin/heroslider/edit/{id}',    'AdminHeroSliderController@edit');
+$router->post('/admin/heroslider/update/{id}', 'AdminHeroSliderController@update');
+$router->post('/admin/heroslider/delete/{id}', 'AdminHeroSliderController@delete');

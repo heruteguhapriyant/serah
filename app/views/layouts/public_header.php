@@ -1,3 +1,19 @@
+<?php
+// app/views/layouts/public_header.php
+$currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$base = parse_url(APP_URL, PHP_URL_PATH);
+$path = '/' . trim(str_replace($base, '', $currentPath), '/');
+?>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><?= $pageTitle ?? APP_NAME ?> — <?= APP_TAGLINE ?></title>
+  <link rel="stylesheet" href="<?= APP_URL ?>/css/style.css" />
+</head>
+<body>
+
 <nav class="navbar" id="navbar">
 
   <!-- KIRI: Logo SERAH + Sponsor Utama -->
@@ -13,15 +29,20 @@
     <!-- Garis pemisah -->
     <span style="width:1px; height:28px; background:rgba(28,31,33,0.15);"></span>
 
-    <!-- Logo Sponsor Utama -->
-    <a href="https://URL-WEBSITE-SPONSOR-UTAMA.com" target="_blank" rel="noopener"
-       title="Sponsor Utama">
-      <img src="<?= APP_URL ?>/img/logo-sponsor-utama.png"
-           alt="Sponsor Utama"
-           style="height:28px; width:auto; display:block; opacity:0.85; transition:opacity 0.2s;"
-           onmouseover="this.style.opacity='1'"
-           onmouseout="this.style.opacity='0.85'" />
-    </a>
+    <!-- Label + Logo Sponsor Utama -->
+    <div style="display:flex; align-items:center; gap:0.6rem;">
+      <span style="font-size:0.62rem; font-weight:500; letter-spacing:0.12em;
+                  text-transform:uppercase; color:var(--warm-gray); white-space:nowrap;">
+        Didukung oleh
+      </span>
+      <a href="https://www.djarumfoundation.org/" target="_blank" rel="noopener nofollow">
+        <img src="<?= APP_URL ?>/img/logo-sponsor-utama.png"
+            alt="Djarum Foundation"
+            style="height:110px; width:auto; display:block; opacity:0.85; transition:opacity 0.2s;"
+            onmouseover="this.style.opacity='1'"
+            onmouseout="this.style.opacity='0.85'" />
+      </a>
+    </div>
 
   </div>
 
@@ -33,3 +54,5 @@
   </ul>
 
 </nav>
+
+<div class="page-wrap">
